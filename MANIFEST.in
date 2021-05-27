@@ -1,0 +1,2 @@
+graft pythondata_misc_usb_ohci/verilog/
+global-exclude *.py[cod]
