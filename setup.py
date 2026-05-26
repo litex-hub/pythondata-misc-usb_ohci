@@ -1,9 +1,15 @@
 import setuptools
+import re
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-from pythondata_misc_usb_ohci import version_str
+with open("pythondata_misc_usb_ohci/__init__.py", "r") as fh:
+    version_str = re.search(
+        r'^version_str = "([^"]+)"',
+        fh.read(),
+        re.MULTILINE,
+    ).group(1)
 
 setuptools.setup(
     name="pythondata-misc-usb_ohci",
@@ -24,7 +30,7 @@ Python module containing verilog files for SpinalHDL's USB OHCI core.""",
     zip_safe=False,
     packages=setuptools.find_packages(),
     package_data={
-        'misc_ohci': ['misc_ohci/verilog/**'],
+        'pythondata_misc_usb_ohci': ['verilog/**'],
     },
     include_package_data=True,
     project_urls={
